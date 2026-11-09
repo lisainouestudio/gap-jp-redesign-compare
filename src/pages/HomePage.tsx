@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { homeHeroes, womenCategories } from "../data/fixtures";
+import { asset } from "../data/asset";
 import { SiteShell } from "../components/layout/SiteShell";
 import styles from "./HomePage.module.css";
 
@@ -40,7 +41,7 @@ export function HomePage() {
           </div>
         </Link>
         <Link to="/women/sweaters" className={styles.banner}>
-          <img src="/images/hero-knit.svg" alt="" />
+          <img src={asset("images/hero-knit.svg")} alt="" />
           <div>
             <h2>Sweaters & Cardigans</h2>
             <p>CashSoft をはじめとする秋のニット</p>

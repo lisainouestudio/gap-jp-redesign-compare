@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { womenCategories } from "../data/fixtures";
+import { asset } from "../data/asset";
 import { SiteShell } from "../components/layout/SiteShell";
 import styles from "./ClpPage.module.css";
 
@@ -17,7 +18,7 @@ export function WomenClpPage() {
           <p>新作から定番まで。毎日のワードローブをアップデート。</p>
         </header>
         <div className={styles.hero}>
-          <img src="/images/clp-women.svg" alt="" />
+          <img src={asset("images/clp-women.svg")} alt="" />
           <div>
             <h2>Shop Women</h2>
             <Link to="/women/sweaters">セーター＆カーディガンを見る</Link>

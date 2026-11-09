@@ -1,3 +1,5 @@
+import { asset } from "./asset";
+
 export type Product = {
   id: string;
   slug: string;
@@ -30,10 +32,10 @@ export const heroProduct: Product = {
   color: "ハッピーストライプ",
   colorCode: "1184982036",
   images: [
-    "/images/product-main.svg",
-    "/images/product-alt-1.svg",
-    "/images/product-alt-2.svg",
-    "/images/product-alt-3.svg",
+    asset("images/product-main.svg"),
+    asset("images/product-alt-1.svg"),
+    asset("images/product-alt-2.svg"),
+    asset("images/product-alt-3.svg"),
   ],
   category: "セーター＆カーディガン",
   badge: "New",
@@ -49,7 +51,7 @@ export const plpProducts: Product[] = [
     price: 6990,
     color: "ネイビー",
     colorCode: "navy",
-    images: ["/images/product-alt-1.svg"],
+    images: [asset("images/product-alt-1.svg")],
     category: "セーター＆カーディガン",
   },
   {
@@ -60,7 +62,7 @@ export const plpProducts: Product[] = [
     price: 9990,
     color: "オートミール",
     colorCode: "oatmeal",
-    images: ["/images/product-alt-2.svg"],
+    images: [asset("images/product-alt-2.svg")],
     category: "セーター＆カーディガン",
     badge: "Sale",
   },
@@ -72,7 +74,7 @@ export const plpProducts: Product[] = [
     price: 5990,
     color: "ブラック",
     colorCode: "black",
-    images: ["/images/product-alt-3.svg"],
+    images: [asset("images/product-alt-3.svg")],
     category: "セーター＆カーディガン",
   },
   {
@@ -83,7 +85,7 @@ export const plpProducts: Product[] = [
     price: 7490,
     color: "グレー",
     colorCode: "grey",
-    images: ["/images/rec-3.svg"],
+    images: [asset("images/rec-3.svg")],
     category: "セーター＆カーディガン",
   },
   {
@@ -94,7 +96,7 @@ export const plpProducts: Product[] = [
     price: 8490,
     color: "クリーム",
     colorCode: "cream",
-    images: ["/images/rec-4.svg"],
+    images: [asset("images/rec-4.svg")],
     category: "セーター＆カーディガン",
   },
   {
@@ -105,7 +107,7 @@ export const plpProducts: Product[] = [
     price: 8990,
     color: "カーキ",
     colorCode: "khaki",
-    images: ["/images/rec-1.svg"],
+    images: [asset("images/rec-1.svg")],
     category: "セーター＆カーディガン",
   },
   {
@@ -116,7 +118,7 @@ export const plpProducts: Product[] = [
     price: 10900,
     color: "アイボリー",
     colorCode: "ivory",
-    images: ["/images/rec-2.svg"],
+    images: [asset("images/rec-2.svg")],
     category: "セーター＆カーディガン",
   },
 ];
@@ -130,7 +132,7 @@ export const recommendations: Product[] = [
     price: 10900,
     color: "ブラウン",
     colorCode: "brown",
-    images: ["/images/rec-1.svg"],
+    images: [asset("images/rec-1.svg")],
     category: "パーカー",
   },
   {
@@ -141,7 +143,7 @@ export const recommendations: Product[] = [
     price: 13900,
     color: "ブラウン",
     colorCode: "brown",
-    images: ["/images/rec-2.svg"],
+    images: [asset("images/rec-2.svg")],
     category: "アウター",
   },
   {
@@ -152,7 +154,7 @@ export const recommendations: Product[] = [
     price: 9990,
     color: "ライトインディゴ",
     colorCode: "indigo",
-    images: ["/images/rec-3.svg"],
+    images: [asset("images/rec-3.svg")],
     category: "デニム",
   },
   {
@@ -163,7 +165,7 @@ export const recommendations: Product[] = [
     price: 3990,
     color: "ホワイト",
     colorCode: "white",
-    images: ["/images/rec-4.svg"],
+    images: [asset("images/rec-4.svg")],
     category: "トップス",
   },
 ];
@@ -206,12 +208,12 @@ export const mainNav: NavItem[] = [
 ];
 
 export const womenCategories = [
-  { label: "セーター＆カーディガン", href: "/women/sweaters", image: "/images/cat-sweaters.svg" },
-  { label: "デニム", href: "/women", image: "/images/cat-denim.svg" },
-  { label: "トップス", href: "/women", image: "/images/cat-tops.svg" },
-  { label: "アウター", href: "/women", image: "/images/cat-outer.svg" },
-  { label: "ワンピース", href: "/women", image: "/images/cat-dress.svg" },
-  { label: "アクティブ", href: "/women", image: "/images/cat-active.svg" },
+  { label: "セーター＆カーディガン", href: "/women/sweaters", image: asset("images/cat-sweaters.svg") },
+  { label: "デニム", href: "/women", image: asset("images/cat-denim.svg") },
+  { label: "トップス", href: "/women", image: asset("images/cat-tops.svg") },
+  { label: "アウター", href: "/women", image: asset("images/cat-outer.svg") },
+  { label: "ワンピース", href: "/women", image: asset("images/cat-dress.svg") },
+  { label: "アクティブ", href: "/women", image: asset("images/cat-active.svg") },
 ];
 
 export const homeHeroes = [
@@ -221,7 +223,7 @@ export const homeHeroes = [
     subtitle: "やわらかな着心地の新作ニット",
     cta: "ウィメンズを見る",
     href: "/women",
-    image: "/images/hero-1.svg",
+    image: asset("images/hero-1.svg"),
   },
   {
     id: "h2",
@@ -229,7 +231,7 @@ export const homeHeroes = [
     subtitle: "毎日はけるフィットを見つけよう",
     cta: "デニムを見る",
     href: "/women",
-    image: "/images/hero-2.svg",
+    image: asset("images/hero-2.svg"),
   },
 ];
 

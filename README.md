@@ -29,11 +29,15 @@ npm run preview
 
 ## Deploy
 
-Static Vite build. Connect the GitHub repo to Vercel (framework preset: Vite) or:
+- **GitHub Pages** (auto on push to `main`): https://lisainouestudio.github.io/gap-jp-redesign-compare/
+- **Vercel** (recommended for a custom domain): log in once, then connect the repo
 
 ```bash
+npx vercel login
 npx vercel --prod
 ```
+
+Claim a temporary anonymous deploy (expires ~60m) via the claim URL printed by `npx vercel deploy --temporary`.
 
 ## Phase 2
 
