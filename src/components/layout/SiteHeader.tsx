@@ -57,7 +57,14 @@ export function SiteHeader() {
 
       {/* Promo ticker */}
       <div className={styles.promoTicker}>
-        <p>GAP MUSIC PRESENTS: 着用アイテムをチェック</p>
+        <p>GAP MUSIC PRESENTS:</p>
+      </div>
+
+      {/* Sitewide deal bar (exact live copy) */}
+      <div className={styles.dealBar}>
+        <p>2点で30%off、3点以上で40%off</p>
+        <span>セール・一部商品を除く</span>
+        <button type="button">詳細</button>
       </div>
 
       {/* Main bar */}

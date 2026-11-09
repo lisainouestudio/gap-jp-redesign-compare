@@ -36,6 +36,20 @@
   color: var(--color-text-secondary);
 }
 
+.ism {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.ism img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: var(--color-bg-muted);
+}
+
 .layout {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -69,16 +83,27 @@
 
 .toolbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: var(--fs-sm);
   margin-bottom: var(--space-4);
   color: var(--color-text-secondary);
+}
+
+.mobileCount {
+  display: none;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-5) var(--space-4);
+}
+
+.moreNote {
+  margin-top: var(--space-6);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -90,5 +115,11 @@
   }
   .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .ism {
+    grid-template-columns: 1fr;
+  }
+  .mobileCount {
+    display: inline;
   }
 }

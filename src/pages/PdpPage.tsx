@@ -4,10 +4,10 @@ import {
   colors,
   formatYen,
   heroProduct,
-  plpProducts,
   recommendations,
   sizes,
 } from "../data/fixtures";
+import { sweaterProducts } from "../data/plpSweaters";
 import { useCart } from "../context/CartContext";
 import { SiteShell } from "../components/layout/SiteShell";
 import { Button } from "../components/ui/Button";
@@ -18,7 +18,10 @@ import styles from "./PdpPage.module.css";
 export function PdpPage() {
   const { id } = useParams();
   const product = useMemo(
-    () => plpProducts.find((p) => p.id === id) ?? heroProduct,
+    () =>
+      sweaterProducts.find((p) => p.id === id) ??
+      (id === heroProduct.id ? heroProduct : undefined) ??
+      heroProduct,
     [id],
   );
   const cart = useCart();

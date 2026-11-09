@@ -320,6 +320,32 @@ export const footerNews = [
     title: "Gap ららぽーと横浜店 閉店のお知らせ",
     date: "2026.10.26",
   },
+  {
+    tag: "ストア",
+    title: "Gap Logo POPUP-SHOP",
+    date: "2026.10.22",
+  },
+];
+
+export const homePromoRows = [
+  {
+    title: "GAP MUSIC",
+    body: "音楽とファッションで、自分らしさを表現しよう。",
+    cta: "特設サイト",
+    tone: "music" as const,
+  },
+  {
+    title: "ONE MEMBERSHIP. TWO BRANDS.",
+    body: "新規会員登録で1,000ポイント。GapとBanana Republicで使えるメンバーシップ。",
+    cta: "今すぐ登録",
+    tone: "member" as const,
+  },
+  {
+    title: "GapX",
+    body: "多様なブランドの世界観が交差する、期間限定コラボコレクション。",
+    cta: "詳しく",
+    tone: "gapx" as const,
+  },
 ];
 
 export const homePromoStrip =

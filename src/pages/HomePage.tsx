@@ -5,7 +5,6 @@ import {
   homeEditorialTiles,
   homeFeatureBanner,
   homeHero,
-  homePromoStrip,
   staffSnaps,
 } from "../data/siteChrome";
 import { SiteShell } from "../components/layout/SiteShell";
@@ -14,11 +13,6 @@ import styles from "./HomePage.module.css";
 export function HomePage() {
   return (
     <SiteShell>
-      <div className={styles.promoStrip}>
-        <p>{homePromoStrip}</p>
-        <span>期間限定、セール・一部商品を除く</span>
-      </div>
-
       <section className={styles.hero}>
         <img src={homeHero.image} alt="" className={styles.heroImg} />
         <div className={styles.heroCopy}>

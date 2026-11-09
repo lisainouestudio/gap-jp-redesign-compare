@@ -1,0 +1,141 @@
+.page {
+  max-width: var(--site-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6) var(--space-12);
+}
+
+.crumbs {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.crumbs a {
+  text-decoration: none;
+}
+
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: var(--space-8);
+}
+
+.catSection h2,
+.snapSection h2,
+.productSection h2 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-4);
+}
+
+.catRail,
+.snapRail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(140px, 160px);
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  margin: 0 calc(-1 * var(--space-2)) var(--space-10);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+}
+
+.catTile {
+  text-decoration: none;
+  color: inherit;
+  background: #f3f3f3;
+}
+
+.catTile img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.catTile span {
+  display: block;
+  padding: 0.65rem 0.5rem;
+  font-size: 12px;
+  text-align: center;
+  background: #fff;
+  line-height: 1.35;
+  min-height: 2.8em;
+}
+
+.newArrival {
+  margin-bottom: var(--space-10);
+  background: #eee;
+}
+
+.newArrival img {
+  width: 100%;
+  display: block;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-4);
+}
+
+.sectionHead a {
+  font-size: var(--fs-sm);
+  text-decoration: underline;
+}
+
+.snapCard {
+  font-size: var(--fs-sm);
+}
+
+.snapPhoto {
+  aspect-ratio: 3 / 4;
+  margin-bottom: var(--space-2);
+}
+
+.snapTitle {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.snapMeta {
+  font-size: 12px;
+}
+
+.snapMeta span {
+  color: var(--color-text-secondary);
+}
+
+.snapStore,
+.snapCard time {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.productSection {
+  margin-top: var(--space-10);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5) var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

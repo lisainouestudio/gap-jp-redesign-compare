@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { asset } from "../../data/asset";
 import {
   brandSwitcher,
   footerHelp,
   footerLegal,
   footerNews,
+  homePromoRows,
 } from "../../data/siteChrome";
 import styles from "./SiteFooter.module.css";
 
@@ -15,15 +17,31 @@ export function SiteFooter() {
           <h2>ニュース</h2>
           <Link to="/">ニュース一覧へ</Link>
         </div>
-        <ul className={styles.newsList}>
+        <ul className={styles.newsCards}>
           {footerNews.map((n) => (
-            <li key={n.title}>
-              <span className={styles.tag}>{n.tag}</span>
-              <span className={styles.newsTitle}>{n.title}</span>
+            <li key={n.title} className={styles.newsCard}>
+              <div className={styles.newsCardMedia} aria-hidden />
+              <p className={styles.newsTitle}>{n.title}</p>
               <time>{n.date}</time>
+              <span className={styles.tag}>{n.tag}</span>
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className={styles.promoRows}>
+        {homePromoRows.map((row) => (
+          <article key={row.title} className={styles.promoRow} data-tone={row.tone}>
+            <div className={styles.promoThumb} aria-hidden>
+              <span>{row.title}</span>
+            </div>
+            <div>
+              <h3>{row.title}</h3>
+              <p>{row.body}</p>
+              <button type="button">{row.cta}</button>
+            </div>
+          </article>
+        ))}
       </div>
 
       <div className={styles.help}>
@@ -40,7 +58,11 @@ export function SiteFooter() {
         <p className={styles.brandIntro}>公式オンラインストア</p>
         <div className={styles.brandCards}>
           <Link to="/" className={styles.brandCard}>
-            <span className={styles.gapBox}>GAP</span>
+            <img
+              src={asset("images/live/footer-gap.svg")}
+              alt="Gap 公式オンラインストア"
+              className={styles.brandLogo}
+            />
             <span>Gap 公式オンラインストア</span>
           </Link>
           <a
@@ -49,7 +71,11 @@ export function SiteFooter() {
             target="_blank"
             rel="noreferrer"
           >
-            <span className={styles.brMark}>BR</span>
+            <img
+              src={asset("images/live/footer-br.svg")}
+              alt="BANANA REPUBLIC 公式オンラインストア"
+              className={styles.brandLogo}
+            />
             <span>BANANA REPUBLIC 公式オンラインストア</span>
           </a>
         </div>
