@@ -1,7 +1,8 @@
 :root {
   /* Brand */
-  --gap-navy: #002855;
-  --gap-navy-dark: #001a38;
+  --gap-navy: #0033a0;
+  --gap-navy-dark: #002470;
+  --gap-blue: #0033a0;
   --gap-black: #111111;
   --gap-red: #e31837;
   --gap-success: #1a7a3a;

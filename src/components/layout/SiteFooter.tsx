@@ -1,43 +1,76 @@
+import { Link } from "react-router-dom";
+import {
+  brandSwitcher,
+  footerHelp,
+  footerLegal,
+  footerNews,
+} from "../../data/siteChrome";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.inner}>
-        <div className={styles.cols}>
-          <div>
-            <h3>カスタマーサービス</h3>
-            <ul>
-              <li>お問い合わせ</li>
-              <li>配送について</li>
-              <li>返品・交換</li>
-              <li>サイズガイド</li>
-            </ul>
-          </div>
-          <div>
-            <h3>アバウトギャップ</h3>
-            <ul>
-              <li>ブランドについて</li>
-              <li>サステナビリティ</li>
-              <li>採用情報</li>
-            </ul>
-          </div>
-          <div>
-            <h3>アカウント</h3>
-            <ul>
-              <li>ログイン</li>
-              <li>会員登録</li>
-              <li>注文履歴</li>
-            </ul>
-          </div>
+    <footer className={styles.footer} id="footer">
+      <div className={styles.news}>
+        <div className={styles.newsHead}>
+          <h2>ニュース</h2>
+          <Link to="/">ニュース一覧へ</Link>
         </div>
-        <div className={styles.legal}>
-          <p>© Gap Inc. UX redesign mockup — not affiliated with Gap Inc.</p>
-          <p>
-            <span>利用規約</span>
-            <span>プライバシーポリシー</span>
-          </p>
+        <ul className={styles.newsList}>
+          {footerNews.map((n) => (
+            <li key={n.title}>
+              <span className={styles.tag}>{n.tag}</span>
+              <span className={styles.newsTitle}>{n.title}</span>
+              <time>{n.date}</time>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className={styles.help}>
+        <ul>
+          {footerHelp.map((l) => (
+            <li key={l.label}>
+              <Link to={l.href}>{l.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className={styles.brandBlock}>
+        <p className={styles.brandIntro}>公式オンラインストア</p>
+        <div className={styles.brandCards}>
+          <Link to="/" className={styles.brandCard}>
+            <span className={styles.gapBox}>GAP</span>
+            <span>Gap 公式オンラインストア</span>
+          </Link>
+          <a
+            href={brandSwitcher[1].href}
+            className={styles.brandCard}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className={styles.brMark}>BR</span>
+            <span>BANANA REPUBLIC 公式オンラインストア</span>
+          </a>
         </div>
+        <p className={styles.collabNote}>
+          【新着コラボ】Gap×ヴィクトリア・ベッカム第二章 着るだけでHAPPY!
+          人気キャラクターアイテムに新作登場
+        </p>
+      </div>
+
+      <div className={styles.legal}>
+        <ul>
+          {footerLegal.map((l) => (
+            <li key={l.label}>
+              <Link to={l.href}>{l.label}</Link>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.copy}>
+          © Gap Inc. UX redesign mockup — not affiliated with Gap Inc. / Banana
+          Republic.
+        </p>
       </div>
     </footer>
   );
