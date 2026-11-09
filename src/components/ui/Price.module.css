@@ -1,0 +1,16 @@
+.price {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.sm {
+  font-size: var(--fs-sm);
+}
+
+.md {
+  font-size: var(--fs-md);
+}
+
+.lg {
+  font-size: var(--fs-xl);
+}

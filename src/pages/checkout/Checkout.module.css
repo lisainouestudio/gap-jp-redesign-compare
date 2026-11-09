@@ -1,0 +1,132 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sub {
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
+.points {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.link {
+  color: var(--gap-navy);
+  text-decoration: underline;
+  font-size: inherit;
+}
+
+.accountBox {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.accountBox p {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mt {
+  margin-top: var(--space-5);
+}
+
+.required {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.paypayLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.paypayBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff0033;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+.paypayBadgeLight {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  margin-right: 0.35rem;
+  font-size: 12px;
+}
+
+.payNote {
+  display: block;
+  margin-top: var(--space-2);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+}
+
+.addGift {
+  font-size: var(--fs-sm);
+  color: var(--gap-navy);
+  text-decoration: underline;
+  text-align: left;
+  padding: var(--space-2) 0;
+}
+
+.confirmTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--fs-base);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.confirmTotal strong {
+  font-size: var(--fs-xl);
+}
+
+.legal {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}

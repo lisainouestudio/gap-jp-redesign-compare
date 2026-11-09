@@ -1,0 +1,67 @@
+.step {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.active {
+  border-color: var(--color-border-strong);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.left h2 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gap-navy);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.done {
+  background: var(--gap-success);
+}
+
+.edit {
+  font-size: var(--fs-sm);
+  color: var(--gap-navy);
+  text-decoration: underline;
+}
+
+.body {
+  margin-top: var(--space-5);
+}
+
+.summary {
+  margin-top: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding-left: calc(28px + var(--space-3));
+}
+
+.collapsed .body {
+  display: none;
+}

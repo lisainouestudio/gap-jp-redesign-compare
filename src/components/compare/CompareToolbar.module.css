@@ -1,0 +1,71 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  padding: 0.75rem 1.25rem;
+  background: var(--shell-surface);
+  border-bottom: 1px solid var(--shell-border);
+  color: var(--shell-text);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 180px;
+}
+
+.brand strong {
+  font-size: var(--fs-base);
+  letter-spacing: 0.04em;
+}
+
+.brand span {
+  font-size: var(--fs-xs);
+  color: #9aa3b2;
+}
+
+.groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.group {
+  display: inline-flex;
+  background: #1a1e25;
+  border: 1px solid var(--shell-border);
+  border-radius: 999px;
+  padding: 2px;
+}
+
+.group button {
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: #9aa3b2;
+}
+
+.group button:hover {
+  color: var(--shell-text);
+}
+
+.active {
+  background: var(--shell-accent) !important;
+  color: #0b1220 !important;
+}
+
+.note {
+  font-size: var(--fs-xs);
+  color: #7d8696;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .note {
+    display: none;
+  }
+}
