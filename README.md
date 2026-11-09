@@ -27,17 +27,23 @@ npm run build
 npm run preview
 ```
 
-## Deploy
+## Live demo
 
-- **GitHub Pages** (auto on push to `main`): https://lisainouestudio.github.io/gap-jp-redesign-compare/
-- **Vercel** (recommended for a custom domain): log in once, then connect the repo
+- **GitHub Pages:** https://lisainouestudio.github.io/gap-jp-redesign-compare/
+- **Repo:** https://github.com/lisainouestudio/gap-jp-redesign-compare
+
+### Redeploy Pages
+
+```bash
+GITHUB_PAGES=true npm run build && npx gh-pages -d dist -b gh-pages
+```
+
+### Vercel (optional)
 
 ```bash
 npx vercel login
 npx vercel --prod
 ```
-
-Claim a temporary anonymous deploy (expires ~60m) via the claim URL printed by `npx vercel deploy --temporary`.
 
 ## Phase 2
 
