@@ -28,33 +28,36 @@ export function HotspotLayer() {
 
   return (
     <div className={styles.layer} aria-label="Improvement hotspots">
-      {visible.map((a, idx) => (
-        <div
-          key={a.id}
-          className={styles.hotspot}
-          style={{ left: `${a.x}%`, top: `${a.y}%` }}
-        >
-          <button
-            type="button"
-            className={styles.dot}
-            aria-expanded={openId === a.id}
-            onClick={() => setOpenId(openId === a.id ? null : a.id)}
+      {visible.map((a, idx) => {
+        const isActive = openId === a.id;
+        return (
+          <div
+            key={a.id}
+            className={[styles.hotspot, isActive ? styles.hotspotActive : ""].filter(Boolean).join(" ")}
+            style={{ left: `${a.x}%`, top: a.y }}
           >
-            {idx + 1}
-          </button>
-          {openId === a.id ? (
-            <div className={styles.callout} role="dialog">
-              <strong>{a.title}</strong>
-              <p>
-                <span>Why</span> {a.why}
-              </p>
-              <p>
-                <span>How</span> {a.how}
-              </p>
-            </div>
-          ) : null}
-        </div>
-      ))}
+            <button
+              type="button"
+              className={[styles.dot, isActive ? styles.dotActive : ""].filter(Boolean).join(" ")}
+              aria-expanded={isActive}
+              onClick={() => setOpenId(isActive ? null : a.id)}
+            >
+              {idx + 1}
+            </button>
+            {isActive ? (
+              <div className={styles.callout} role="dialog">
+                <strong>{a.title}</strong>
+                <p>
+                  <span>Why</span> {a.why}
+                </p>
+                <p>
+                  <span>How</span> {a.how}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -1,250 +1,192 @@
 .footer {
   margin-top: auto;
-  background: #f5f5f5;
+  background: #fff;
   color: var(--color-text);
-  border-top: 1px solid var(--color-border);
-}
-
-.news {
-  max-width: var(--site-max);
-  margin: 0 auto;
-  padding: var(--space-10) var(--space-6) var(--space-6);
-}
-
-.newsHead {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: var(--space-4);
-}
-
-.newsHead h2 {
-  font-size: var(--fs-lg);
-}
-
-.newsHead a {
-  font-size: var(--fs-sm);
-  text-decoration: underline;
-}
-
-.newsCards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-3);
-}
-
-.newsCard {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  padding: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  min-height: 100%;
-}
-
-.newsCardMedia {
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, #d9dde5, #9aa7bc);
-  margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) 0;
-}
-
-.tag {
-  font-size: 11px;
-  color: var(--color-text-secondary);
-}
-
-.newsTitle {
-  line-height: 1.4;
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  flex: 1;
-}
-
-.newsCard time {
-  font-size: 11px;
-  color: var(--color-text-muted);
-}
-
-.promoRows {
-  max-width: var(--site-max);
-  margin: 0 auto;
-  padding: 0 var(--space-6) var(--space-8);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.promoRow {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: var(--space-5);
-  align-items: center;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  padding: var(--space-4);
-}
-
-.promoThumb {
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  text-align: center;
-  padding: var(--space-3);
-  background: #0033a0;
-}
-
-.promoRow[data-tone="member"] .promoThumb {
-  background: #111;
-}
-
-.promoRow[data-tone="gapx"] .promoThumb {
-  background: #222;
-}
-
-.promoRow h3 {
-  font-size: var(--fs-md);
-  margin-bottom: var(--space-2);
-}
-
-.promoRow p {
-  font-size: var(--fs-sm);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-2);
-}
-
-.promoRow button {
-  font-size: var(--fs-sm);
-  text-decoration: underline;
-  color: var(--gap-navy);
+  border-top: 1px solid #e5e5e5;
 }
 
 .help {
-  background: #fff;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.help ul {
   max-width: var(--site-max);
   margin: 0 auto;
-  padding: var(--space-5) var(--space-6);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
+  padding: 2.5rem 1.5rem 0;
+}
+
+.helpGrid {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
   justify-content: center;
+  column-gap: 3.5rem;
+  row-gap: 0.85rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.help a {
-  font-size: var(--fs-sm);
+.helpGrid a {
+  font-size: 13px;
+  color: #111;
   text-decoration: none;
+  letter-spacing: 0.02em;
 }
 
-.help a:hover {
+.helpGrid a:hover {
   text-decoration: underline;
+}
+
+.appSocial {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3.75rem;
+  flex-wrap: wrap;
+  max-width: var(--site-max);
+  margin: 2rem auto 0;
+  padding: 0 1.5rem 2rem;
+}
+
+.appBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.appHeading {
+  color: #6b6b6b;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 0 8px;
+}
+
+.appBadges {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.appBadges a {
+  display: block;
+  line-height: 0;
+}
+
+.appBadges img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.social {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 4px;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.social img {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .brandBlock {
   max-width: var(--site-max);
   margin: 0 auto;
-  padding: var(--space-8) var(--space-6);
-  text-align: center;
+  padding: 1.75rem 1.5rem 2.5rem;
+  border-top: 1px solid #e5e5e5;
 }
 
-.brandIntro {
-  font-size: var(--fs-sm);
-  margin-bottom: var(--space-4);
-  color: var(--color-text-secondary);
-}
-
-.brandCards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  max-width: 720px;
-  margin: 0 auto var(--space-5);
-}
-
-.brandCard {
+.brandLogos {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-5);
-  background: #fff;
-  border: 1px solid var(--color-border);
-  text-decoration: none;
-  color: inherit;
-  font-size: var(--fs-sm);
-  font-weight: 500;
+  gap: 2.5rem;
 }
 
-.brandCard:hover {
-  text-decoration: none;
-  border-color: #999;
+.brandLogos a {
+  display: block;
+  line-height: 0;
 }
 
-.brandLogo {
-  height: 36px;
+.gapLogo {
+  height: 44px;
   width: auto;
-  max-width: 160px;
-  object-fit: contain;
+  display: block;
 }
 
-.collabNote {
-  font-size: var(--fs-xs);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  max-width: 640px;
-  margin: 0 auto;
+.brLogo {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 .legal {
-  background: #2b2b2b;
-  color: #ccc;
-  padding: var(--space-6);
+  border-top: 1px solid #eee;
+  padding: 1.25rem 1.5rem 1.75rem;
 }
 
 .legal ul {
   max-width: var(--site-max);
-  margin: 0 auto var(--space-5);
+  margin: 0 auto 0.85rem;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
+  gap: 0.5rem 1.25rem;
   justify-content: center;
+  list-style: none;
+  padding: 0;
 }
 
 .legal a {
-  color: #ccc;
+  color: #6b6b6b;
   font-size: 11px;
   text-decoration: none;
 }
 
 .legal a:hover {
-  color: #fff;
+  color: #111;
   text-decoration: underline;
 }
 
 .copy {
   text-align: center;
   font-size: 11px;
-  color: #888;
+  color: #999;
+  margin: 0;
 }
 
-@media (max-width: 900px) {
-  .newsCards {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 800px) {
+  .helpGrid {
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 2rem;
   }
-  .promoRow {
-    grid-template-columns: 100px 1fr;
-  }
-}
 
-@media (max-width: 700px) {
-  .brandCards {
-    grid-template-columns: 1fr;
+  .appSocial {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .appBlock {
+    align-items: center;
+    text-align: center;
+  }
+
+  .brandLogos {
+    gap: 1.75rem;
+  }
+
+  .gapLogo {
+    height: 36px;
+  }
+
+  .brLogo {
+    height: 22px;
   }
 }

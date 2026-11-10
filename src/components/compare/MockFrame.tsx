@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { MemoryRouter, useLocation, useNavigate } from "react-router-dom";
 import { useCompare, type VariantId } from "../../context/CompareContext";
 import { VariantProvider } from "../../context/VariantContext";
+import { PromoDrawer } from "../layout/PromoDrawer";
 import { SiteRoutes } from "../../routes/SiteRoutes";
 import { HotspotLayer } from "./HotspotLayer";
 import styles from "./MockFrame.module.css";
@@ -44,9 +45,11 @@ export function MockFrame({
   variant: VariantId;
   label: string;
 }) {
-  const { viewport, syncedPath, layout } = useCompare();
+  const { viewport, syncedPath, layout, showAnnotations, setShowAnnotations } =
+    useCompare();
   const onlyImproved = layout === "improvedOnly";
   const isMobile = viewport === "mobile";
+  const isImproved = variant === "improved";
   const viewportLabel = isMobile ? "Mobile" : "Desktop";
   const viewportSize = isMobile ? "390 × 844" : "1280 × scroll";
 
@@ -63,7 +66,7 @@ export function MockFrame({
     >
       <div className={styles.label}>
         <div className={styles.labelLeft}>
-          <span className={variant === "improved" ? styles.improved : styles.current}>
+          <span className={isImproved ? styles.improved : styles.current}>
             {label}
           </span>
           <span
@@ -77,7 +80,23 @@ export function MockFrame({
             <span className={styles.viewportSize}>{viewportSize}</span>
           </span>
         </div>
-        <span className={styles.path}>{syncedPath}</span>
+        {isImproved ? (
+          <button
+            type="button"
+            className={[
+              styles.annotToggle,
+              showAnnotations ? styles.annotToggleOn : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            onClick={() => setShowAnnotations(!showAnnotations)}
+            aria-pressed={showAnnotations}
+          >
+            {showAnnotations ? "Annotations on" : "Annotations off"}
+          </button>
+        ) : (
+          <span className={styles.path}>{syncedPath}</span>
+        )}
       </div>
       <div className={styles.bezel}>
         {isMobile ? <div className={styles.notch} aria-hidden /> : null}
@@ -85,10 +104,20 @@ export function MockFrame({
           <VariantProvider variant={variant}>
             <MemoryRouter initialEntries={[syncedPath]}>
               <PathSync variant={variant} />
-              <div className={styles.site}>
-                <SiteRoutes />
-                <HotspotLayer />
+              <div className={styles.scrollArea}>
+                <div
+                  className={[
+                    styles.site,
+                    variant === "improved" ? styles.siteNoDrawer : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <SiteRoutes />
+                  <HotspotLayer />
+                </div>
               </div>
+              <PromoDrawer />
             </MemoryRouter>
           </VariantProvider>
         </div>

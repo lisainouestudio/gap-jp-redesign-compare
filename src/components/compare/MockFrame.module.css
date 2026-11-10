@@ -43,7 +43,7 @@
 }
 
 .improved {
-  background: var(--shell-accent);
+  background: var(--shell-improved);
   color: #0b1220;
 }
 
@@ -90,6 +90,28 @@
   white-space: nowrap;
 }
 
+.annotToggle {
+  flex-shrink: 0;
+  border: 1px solid var(--shell-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #9aa3b2;
+  background: #1a1e25;
+}
+
+.annotToggle:hover {
+  color: var(--shell-text);
+}
+
+.annotToggleOn {
+  background: #6ee7a8;
+  border-color: transparent;
+  color: #0b1220;
+}
+
 .bezel {
   flex: 1;
   min-height: 0;
@@ -118,10 +140,18 @@
 .viewport {
   height: 100%;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
   background: var(--color-bg);
   border-radius: 6px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollArea {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .desktop .viewport {
@@ -150,4 +180,9 @@
 .site {
   position: relative;
   min-height: 100%;
+  padding-bottom: 80px;
+}
+
+.siteNoDrawer {
+  padding-bottom: 0;
 }

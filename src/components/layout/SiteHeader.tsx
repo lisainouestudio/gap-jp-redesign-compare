@@ -1,75 +1,99 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { brandSwitcher, mainNav, utilityLinks } from "../../data/siteChrome";
+import { asset } from "../../data/asset";
+import {
+  brandSwitcher,
+  mainNav,
+  mainNavImproved,
+  utilityLinks,
+} from "../../data/siteChrome";
 import { useCart } from "../../context/CartContext";
 import { useCompare } from "../../context/CompareContext";
+import { useVariant } from "../../context/VariantContext";
 import styles from "./SiteHeader.module.css";
 
 export function SiteHeader() {
   const { count } = useCart();
   const { viewport } = useCompare();
+  const variant = useVariant();
   const [openNav, setOpenNav] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = viewport === "mobile";
+  const isCurrent = variant === "current";
+  const showBrandBar = isCurrent;
+  const showPromoTicker = isCurrent;
+  const navItems = isCurrent ? mainNav : mainNavImproved;
 
   return (
     <header className={styles.header}>
-      {/* Dual-brand utility bar */}
-      <div className={styles.brandBar}>
-        <div className={styles.brandBarInner}>
-          <div className={styles.brands}>
-            {brandSwitcher.map((b) =>
-              b.external ? (
-                <a
-                  key={b.id}
-                  href={b.href}
-                  className={[styles.brandLink, b.active ? styles.brandActive : ""].join(" ")}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {b.id === "gap" ? <span className={styles.gapBox}>GAP</span> : b.label}
-                </a>
-              ) : (
-                <Link
-                  key={b.id}
-                  to={b.href}
-                  className={[styles.brandLink, b.active ? styles.brandActive : ""].join(" ")}
-                >
-                  {b.id === "gap" ? <span className={styles.gapBox}>GAP</span> : b.label}
-                </Link>
-              ),
-            )}
-          </div>
-          <div className={styles.utilityRight}>
-            {!isMobile
-              ? utilityLinks.map((l) => (
-                  <Link key={l.label} to={l.href} className={styles.utilLink}>
-                    {l.label}
+      {showBrandBar ? (
+        <div className={styles.brandBar}>
+          <div className={styles.brandBarInner}>
+            <div className={styles.brands}>
+              {brandSwitcher.map((b) =>
+                b.external ? (
+                  <a
+                    key={b.id}
+                    href={b.href}
+                    className={[styles.brandLink, b.active ? styles.brandActive : ""].join(" ")}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={b.label}
+                  >
+                    {b.id === "gap" ? (
+                      <span className={styles.gapBox}>GAP</span>
+                    ) : (
+                      <img
+                        src={asset("images/live/logos/br-stacked-light.webp")}
+                        alt=""
+                        className={styles.brBrandLogo}
+                      />
+                    )}
+                  </a>
+                ) : (
+                  <Link
+                    key={b.id}
+                    to={b.href}
+                    className={[styles.brandLink, b.active ? styles.brandActive : ""].join(" ")}
+                    aria-label={b.label}
+                  >
+                    {b.id === "gap" ? (
+                      <span className={styles.gapBox}>GAP</span>
+                    ) : (
+                      <img
+                        src={asset("images/live/logos/br-stacked-light.webp")}
+                        alt=""
+                        className={styles.brBrandLogo}
+                      />
+                    )}
                   </Link>
-                ))
-              : null}
-            <button type="button" className={styles.memberBtn}>
-              会員登録/ログイン
-            </button>
+                ),
+              )}
+            </div>
+            <div className={styles.utilityRight}>
+              {!isMobile
+                ? utilityLinks.map((l) => (
+                    <Link key={l.label} to={l.href} className={styles.utilLink}>
+                      {l.label}
+                    </Link>
+                  ))
+                : null}
+              <button type="button" className={styles.memberBtn}>
+                会員登録/ログイン
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
 
-      {/* Promo ticker */}
-      <div className={styles.promoTicker}>
-        <p>GAP MUSIC PRESENTS:</p>
-      </div>
+      {showPromoTicker ? (
+        <div className={styles.promoTicker}>
+          <p>GAP MUSIC PRESENTS:</p>
+        </div>
+      ) : null}
 
-      {/* Sitewide deal bar (exact live copy) */}
-      <div className={styles.dealBar}>
-        <p>2点で30%off、3点以上で40%off</p>
-        <span>セール・一部商品を除く</span>
-        <button type="button">詳細</button>
-      </div>
-
-      {/* Main bar */}
-      <div className={styles.bar}>
-        <div className={styles.barLeft}>
+      {isMobile ? (
+        <div className={styles.barMobile}>
           <button
             className={styles.iconBtn}
             aria-label="メニュー"
@@ -78,91 +102,106 @@ export function SiteHeader() {
           >
             <Hamburger />
           </button>
-          {!isMobile ? (
-            <button className={styles.iconBtn} aria-label="お気に入り" type="button">
-              <HeartIcon />
-            </button>
-          ) : null}
-        </div>
-
-        <Link to="/" className={styles.logo} aria-label="Gap トップ">
-          <span className={styles.gapBoxLg}>GAP</span>
-        </Link>
-
-        <div className={styles.actions}>
-          <button className={styles.iconBtn} aria-label="検索" type="button">
-            <SearchIcon />
-          </button>
-          <Link to="/cart" className={styles.cart} aria-label={`カート内商品数${count}個`}>
-            <BagIcon />
-            <span className={styles.badge}>{count}</span>
+          <Link to="/" className={styles.logoCenter} aria-label="Gap トップ">
+            <span className={styles.gapBoxLg}>GAP</span>
           </Link>
+          <div className={styles.actions}>
+            <button className={styles.iconBtn} aria-label="検索" type="button">
+              <SearchIcon />
+            </button>
+            {!isCurrent ? (
+              <button className={styles.iconBtn} aria-label="会員登録/ログイン" type="button">
+                <AccountIcon />
+              </button>
+            ) : null}
+            <Link to="/cart" className={styles.cart} aria-label={`カート内商品数${count}個`}>
+              <BagIcon />
+              <span className={styles.badge}>{count}</span>
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className={[styles.barDesktop, !isCurrent ? styles.barCompact : ""].filter(Boolean).join(" ")}>
+          <div className={styles.barTop}>
+            <Link to="/" className={styles.logoLeft} aria-label="Gap トップ">
+              <img
+                src={asset("images/live/logos/gap-wordmark.png")}
+                alt="Gap"
+                className={styles.logoWordmark}
+              />
+            </Link>
 
-      {!isMobile ? (
-        <nav className={styles.nav} aria-label="メイン">
-          <ul className={styles.navList}>
-            {mainNav.map((item) => (
-              <li
-                key={item.id}
-                className={styles.navItem}
-                onMouseEnter={() => setOpenNav(item.id)}
-                onMouseLeave={() => setOpenNav(null)}
-              >
-                <Link
-                  to={item.href}
-                  className={item.accent ? styles.sale : undefined}
-                >
-                  {item.label}
-                </Link>
-                {item.columns && openNav === item.id ? (
-                  <div className={styles.mega}>
-                    <div className={styles.megaInner}>
-                      {item.columns.map((col) => (
-                        <div key={col.title ?? "col"} className={styles.megaCol}>
-                          {col.title ? <h3>{col.title}</h3> : null}
-                          <ul>
-                            {col.links.map((link) => (
-                              <li key={link.label}>
-                                <Link
-                                  to={link.href}
-                                  className={link.accent ? styles.sale : undefined}
-                                  onClick={() => setOpenNav(null)}
-                                >
-                                  {link.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
+            <nav className={styles.navInline} aria-label="メイン">
+              <ul className={styles.navList}>
+                {navItems.map((item) => (
+                  <li
+                    key={item.id}
+                    className={styles.navItem}
+                    onMouseEnter={() => setOpenNav(item.id)}
+                    onMouseLeave={() => setOpenNav(null)}
+                  >
+                    <Link
+                      to={item.href}
+                      className={item.accent ? styles.sale : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.columns && openNav === item.id ? (
+                      <div className={styles.mega}>
+                        <div className={styles.megaInner}>
+                          {item.columns.map((col) => (
+                            <div key={col.title ?? "col"} className={styles.megaCol}>
+                              {col.title ? <h3>{col.title}</h3> : null}
+                              <ul>
+                                {col.links.map((link) => (
+                                  <li key={link.label}>
+                                    <Link
+                                      to={link.href}
+                                      className={link.accent ? styles.sale : undefined}
+                                      onClick={() => setOpenNav(null)}
+                                    >
+                                      {link.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                      <div className={styles.megaAside}>
-                        <p>アカウント</p>
-                        <ul>
-                          <li>ログイン / 会員登録</li>
-                          <li>メンバーシッププログラムについて</li>
-                          <li>スタッフスナップ</li>
-                          <li>ニュース</li>
-                          <li>店舗検索</li>
-                          <li>ギフトカードについて</li>
-                          <li>ヘルプ&ガイド</li>
-                          <li>返品について</li>
-                        </ul>
                       </div>
-                    </div>
-                  </div>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      ) : null}
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className={styles.actionsDesktop}>
+              <label className={styles.searchField}>
+                <SearchIcon />
+                <span>検索</span>
+                <input type="search" placeholder="" aria-label="検索" readOnly />
+              </label>
+              <button className={styles.iconBtn} aria-label="お気に入り" type="button">
+                <HeartIcon />
+              </button>
+              {!isCurrent ? (
+                <button className={styles.iconBtn} aria-label="会員登録/ログイン" type="button">
+                  <AccountIcon />
+                </button>
+              ) : null}
+              <Link to="/cart" className={styles.cart} aria-label={`カート内商品数${count}個`}>
+                <BagIcon />
+                <span className={styles.badge}>{count}</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isMobile && mobileOpen ? (
         <nav className={styles.mobileNav} aria-label="モバイルメニュー">
           <ul>
-            {mainNav.map((item) => (
+            {navItems.map((item) => (
               <li key={item.id}>
                 <Link
                   to={item.href}
@@ -187,8 +226,17 @@ export function SiteHeader() {
           </ul>
           <div className={styles.mobileBrands}>
             <span className={styles.gapBox}>GAP</span>
-            <a href={brandSwitcher[1].href} target="_blank" rel="noreferrer">
-              BANANA REPUBLIC
+            <a
+              href={brandSwitcher[1].href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="BANANA REPUBLIC"
+            >
+              <img
+                src={asset("images/live/logos/br-footer.png")}
+                alt=""
+                className={styles.brBrandLogoDark}
+              />
             </a>
           </div>
         </nav>
@@ -217,9 +265,23 @@ function HeartIcon() {
   );
 }
 
-function SearchIcon() {
+function AccountIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M5.5 19.25c1.4-3.1 3.6-4.5 6.5-4.5s5.1 1.4 6.5 4.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
       <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.6" />
       <path d="M16 16l4 4" stroke="currentColor" strokeWidth="1.6" />
     </svg>

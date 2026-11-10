@@ -1,52 +1,44 @@
 import { Link } from "react-router-dom";
 import { asset } from "../../data/asset";
-import {
-  brandSwitcher,
-  footerHelp,
-  footerLegal,
-  footerNews,
-  homePromoRows,
-} from "../../data/siteChrome";
+import { brandSwitcher, footerHelp, footerLegal } from "../../data/siteChrome";
+import { useVariant } from "../../context/VariantContext";
 import styles from "./SiteFooter.module.css";
 
+const socialLinks = [
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@gap_jp",
+    icon: asset("images/live/footer/tiktok_dark.svg"),
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/gap_jp/",
+    icon: asset("images/live/footer/instagram_dark.svg"),
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/user/GapJapanKK",
+    icon: asset("images/live/footer/youtube_dark.svg"),
+  },
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/user/31vmjl3pr34lwdnlx4gf22hapxie",
+    icon: asset("images/live/footer/spotify_dark.svg"),
+  },
+];
+
 export function SiteFooter() {
+  const variant = useVariant();
+  const helpLinks =
+    variant === "improved"
+      ? [...footerHelp, { label: "ニュース", href: "/" }]
+      : footerHelp;
+
   return (
     <footer className={styles.footer} id="footer">
-      <div className={styles.news}>
-        <div className={styles.newsHead}>
-          <h2>ニュース</h2>
-          <Link to="/">ニュース一覧へ</Link>
-        </div>
-        <ul className={styles.newsCards}>
-          {footerNews.map((n) => (
-            <li key={n.title} className={styles.newsCard}>
-              <div className={styles.newsCardMedia} aria-hidden />
-              <p className={styles.newsTitle}>{n.title}</p>
-              <time>{n.date}</time>
-              <span className={styles.tag}>{n.tag}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className={styles.promoRows}>
-        {homePromoRows.map((row) => (
-          <article key={row.title} className={styles.promoRow} data-tone={row.tone}>
-            <div className={styles.promoThumb} aria-hidden>
-              <span>{row.title}</span>
-            </div>
-            <div>
-              <h3>{row.title}</h3>
-              <p>{row.body}</p>
-              <button type="button">{row.cta}</button>
-            </div>
-          </article>
-        ))}
-      </div>
-
       <div className={styles.help}>
-        <ul>
-          {footerHelp.map((l) => (
+        <ul className={styles.helpGrid}>
+          {helpLinks.map((l) => (
             <li key={l.label}>
               <Link to={l.href}>{l.label}</Link>
             </li>
@@ -54,35 +46,67 @@ export function SiteFooter() {
         </ul>
       </div>
 
+      <div className={styles.appSocial}>
+        <div className={styles.appBlock}>
+          <p className={styles.appHeading}>
+            公式アプリのダウンロードはこちらから
+          </p>
+          <div className={styles.appBadges}>
+            <a
+              href="https://apps.apple.com/jp/app/gap-japan-gong-shiapuri/id937160971"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={asset("images/live/footer/appstore.svg")}
+                alt="Download on the App Store"
+              />
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=jp.co.gap.camplus.cpn&hl=ja"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={asset("images/live/footer/googleplay.svg")}
+                alt="GET IT ON Google Play"
+              />
+            </a>
+          </div>
+        </div>
+        <ul className={styles.social}>
+          {socialLinks.map((s) => (
+            <li key={s.label}>
+              <a href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}>
+                <img src={s.icon} alt="" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className={styles.brandBlock}>
-        <p className={styles.brandIntro}>公式オンラインストア</p>
-        <div className={styles.brandCards}>
-          <Link to="/" className={styles.brandCard}>
+        <div className={styles.brandLogos}>
+          <Link to="/" aria-label="Gap">
             <img
-              src={asset("images/live/footer-gap.svg")}
-              alt="Gap 公式オンラインストア"
-              className={styles.brandLogo}
+              src={asset("images/live/logos/gap-wordmark.png")}
+              alt="Gap"
+              className={styles.gapLogo}
             />
-            <span>Gap 公式オンラインストア</span>
           </Link>
           <a
             href={brandSwitcher[1].href}
-            className={styles.brandCard}
             target="_blank"
             rel="noreferrer"
+            aria-label="Banana Republic"
           >
             <img
-              src={asset("images/live/footer-br.svg")}
-              alt="BANANA REPUBLIC 公式オンラインストア"
-              className={styles.brandLogo}
+              src={asset("images/live/logos/br-footer.png")}
+              alt="BANANA REPUBLIC"
+              className={styles.brLogo}
             />
-            <span>BANANA REPUBLIC 公式オンラインストア</span>
           </a>
         </div>
-        <p className={styles.collabNote}>
-          【新着コラボ】Gap×ヴィクトリア・ベッカム第二章 着るだけでHAPPY!
-          人気キャラクターアイテムに新作登場
-        </p>
       </div>
 
       <div className={styles.legal}>

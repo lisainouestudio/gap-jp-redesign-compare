@@ -4,6 +4,8 @@
   z-index: 50;
   background: var(--color-bg);
   isolation: isolate;
+  container-type: inline-size;
+  container-name: site-header;
 }
 
 .brandBar {
@@ -57,6 +59,24 @@
   padding: 0 6px;
 }
 
+.brBrandLogo {
+  height: 22px;
+  width: auto;
+  display: block;
+  opacity: 0.72;
+}
+
+.brandActive .brBrandLogo,
+.brandLink:hover .brBrandLogo {
+  opacity: 1;
+}
+
+.brBrandLogoDark {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
 .gapBoxLg {
   display: inline-grid;
   place-items: center;
@@ -104,58 +124,242 @@
   padding: 0.55rem var(--space-4);
 }
 
-.dealBar {
-  background: #111;
-  color: #fff;
+.barDesktop {
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+  position: relative;
+}
+
+.barTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+  min-height: 52px;
+  padding: 0.45rem var(--space-5) 0;
+}
+
+.logoLeft {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.logoWordmark {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.navInline {
+  order: 3;
+  flex: 1 1 100%;
+  min-width: 0;
+  margin-top: 0.15rem;
+  border-top: 1px solid #eee;
+}
+
+.navList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  scrollbar-width: none;
+}
+
+.navList::-webkit-scrollbar {
+  display: none;
+}
+
+.navItem {
+  position: static;
+  flex: 0 0 auto;
+}
+
+.navItem > a {
+  display: block;
+  padding: 0.55rem 0 0.7rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.navItem > a:hover {
+  text-decoration: underline;
+}
+
+.sale {
+  color: #e31837 !important;
+}
+
+.actionsDesktop {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  padding: 0.45rem var(--space-4);
-  font-size: var(--fs-sm);
-  font-weight: 700;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  order: 2;
 }
 
-.dealBar span {
-  font-size: 11px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+.searchField {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 120px;
+  height: 36px;
+  padding: 0 0.75rem;
+  background: #f3f3f3;
+  color: #666;
+  font-size: 13px;
+  cursor: text;
 }
 
-.dealBar button {
-  font-size: 11px;
-  text-decoration: underline;
-  color: #fff;
+.searchField input {
+  width: 72px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  pointer-events: none;
 }
 
-.bar {
+/* Wide panes: classic single-row logo | nav | actions */
+@container site-header (min-width: 1101px) {
+  .barTop {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 1.25rem;
+    min-height: 72px;
+    padding: 0.35rem var(--space-6);
+  }
+
+  .logoLeft,
+  .navInline,
+  .actionsDesktop {
+    order: unset;
+  }
+
+  .logoWordmark {
+    height: 44px;
+  }
+
+  .navInline {
+    flex: unset;
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  .navList {
+    justify-content: center;
+    gap: clamp(0.65rem, 1.4vw, 1.5rem);
+  }
+
+  .navItem > a {
+    padding: 0.85rem 0;
+    font-size: 13px;
+  }
+
+  .searchField {
+    min-width: 160px;
+  }
+}
+
+/* Improved: short audience nav sits beside the logo */
+.barCompact .barTop {
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 64px;
+  padding: 0.4rem var(--space-5);
+}
+
+.barCompact .logoLeft {
+  order: 1;
+}
+
+.barCompact .navInline {
+  order: 2;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+
+.barCompact .actionsDesktop {
+  order: 3;
+  margin-left: auto;
+}
+
+.barCompact .navList {
+  justify-content: flex-start;
+  gap: 1.35rem;
+}
+
+.barCompact .navItem > a {
+  padding: 0.85rem 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.barCompact .logoWordmark {
+  height: 40px;
+}
+
+@container site-header (min-width: 1101px) {
+  .barCompact .barTop {
+    display: flex;
+    padding: 0.35rem var(--space-6);
+    min-height: 72px;
+  }
+
+  .barCompact .navList {
+    gap: 1.75rem;
+  }
+
+  .barCompact .navItem > a {
+    font-size: 14px;
+  }
+
+  .barCompact .logoWordmark {
+    height: 44px;
+  }
+}
+
+.barMobile {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  min-height: 64px;
-  padding: 0 var(--space-6);
+  min-height: 56px;
+  padding: 0 var(--space-4);
   border-bottom: 1px solid var(--color-border);
 }
 
-.barLeft,
-.actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.actions {
-  justify-content: flex-end;
-}
-
-.logo {
+.logoCenter {
   justify-self: center;
   text-decoration: none;
 }
 
-.logo:hover {
-  text-decoration: none;
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: end;
 }
 
 .iconBtn,
@@ -168,6 +372,9 @@
   color: var(--color-text);
   position: relative;
   text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 .badge {
@@ -184,40 +391,6 @@
   display: grid;
   place-items: center;
   padding: 0 4px;
-}
-
-.nav {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.navList {
-  display: flex;
-  justify-content: center;
-  gap: clamp(0.75rem, 1.6vw, 1.75rem);
-  padding: 0 var(--space-4);
-  flex-wrap: wrap;
-}
-
-.navItem {
-  position: static;
-}
-
-.navItem > a {
-  display: block;
-  padding: 0.85rem 0;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.navItem > a:hover {
-  text-decoration: underline;
-}
-
-.sale {
-  color: #e31837 !important;
 }
 
 .mega {
@@ -240,12 +413,23 @@
   gap: var(--space-8);
 }
 
+.barCompact .megaInner {
+  padding: 1.5rem var(--space-6) 2rem;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
+}
+
 .megaCol h3 {
   font-size: 12px;
   font-weight: 700;
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--color-border);
+}
+
+.barCompact .megaCol h3 {
+  font-size: 11px;
+  letter-spacing: 0.04em;
 }
 
 .megaCol a {
@@ -256,25 +440,14 @@
   color: var(--color-text);
 }
 
+.barCompact .megaCol a {
+  padding: 0.3rem 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .megaCol a:hover {
   text-decoration: underline;
-}
-
-.megaAside {
-  border-left: 1px solid var(--color-border);
-  padding-left: var(--space-6);
-  font-size: 12px;
-  color: var(--color-text-secondary);
-}
-
-.megaAside p {
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--space-3);
-}
-
-.megaAside li {
-  padding: 0.3rem 0;
 }
 
 .mobileNav {
@@ -320,11 +493,6 @@
 
 .mobileBrands a {
   text-decoration: none;
-}
-
-:global([data-viewport="mobile"]) .bar {
-  padding: 0 var(--space-4);
-  min-height: 56px;
 }
 
 :global([data-viewport="mobile"]) .brandBarInner {
