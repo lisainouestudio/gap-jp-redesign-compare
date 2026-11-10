@@ -86,6 +86,10 @@
   margin-left: auto;
 }
 
+.credit {
+  color: #9aa3b2;
+}
+
 @media (max-width: 900px) {
   .note {
     display: none;

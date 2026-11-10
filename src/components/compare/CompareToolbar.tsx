@@ -77,7 +77,10 @@ export function CompareToolbar() {
         </div>
       </div>
 
-      <p className={styles.note}>Focus: Home · Nav · PDP</p>
+      <p className={styles.note}>
+        Focus: Home · Nav · PDP
+        <span className={styles.credit}> · Audit &amp; redesign by Lisa Inoue</span>
+      </p>
     </header>
   );
 }
