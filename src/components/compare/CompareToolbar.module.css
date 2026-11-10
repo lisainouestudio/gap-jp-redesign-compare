@@ -22,9 +22,19 @@
   letter-spacing: 0.04em;
 }
 
-.brand > span:not(.liveViewport) {
+.brand > span:not(.liveViewport):not(.credit) {
   font-size: var(--fs-xs);
   color: #9aa3b2;
+}
+
+.credit {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #c5ccd8;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(197, 204, 216, 0.35);
+  border-radius: 999px;
 }
 
 .liveViewport {
@@ -84,10 +94,6 @@
   font-size: var(--fs-xs);
   color: #7d8696;
   margin-left: auto;
-}
-
-.credit {
-  color: #9aa3b2;
 }
 
 @media (max-width: 900px) {
