@@ -11,8 +11,8 @@
 
 .dialog {
   background: var(--color-bg);
-  width: min(720px, 100%);
-  max-height: min(90vh, 900px);
+  width: min(920px, 100%);
+  max-height: min(92vh, 960px);
   overflow: auto;
   box-shadow: var(--shadow-modal);
   border-radius: var(--radius-sm);

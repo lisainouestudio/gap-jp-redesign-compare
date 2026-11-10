@@ -1,0 +1,210 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: var(--space-4);
+}
+
+.dialog {
+  background: #fff;
+  width: min(920px, 100%);
+  max-height: min(92vh, 960px);
+  overflow: auto;
+  box-shadow: var(--shadow-modal);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e8e8e8;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 2;
+}
+
+.head h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.close {
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #444;
+}
+
+.body {
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 42px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 13px;
+  text-align: left;
+}
+
+.chev {
+  color: #666;
+  font-size: 11px;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background: #fff;
+  border: 1px solid #ccc;
+  max-height: 260px;
+  overflow: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.option,
+.optionOn {
+  width: 100%;
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  font-size: 13px;
+  background: #fff;
+  color: #222;
+}
+
+.option:hover {
+  background: #f5f7fb;
+}
+
+.optionOn {
+  background: var(--gap-navy);
+  color: #fff;
+}
+
+.unitRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0;
+  margin-bottom: 0.75rem;
+}
+
+.unit,
+.unitOn {
+  min-width: 44px;
+  height: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #555;
+}
+
+.unitOn {
+  background: #000d42;
+  border-color: #000d42;
+  color: #fff;
+}
+
+.chartTitle {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 720px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e0e0e0;
+  padding: 0.55rem 0.35rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.table thead th {
+  background: #f3f3f3;
+  font-weight: 700;
+}
+
+.table tbody th {
+  background: #f7f7f7;
+  text-align: left;
+  padding-left: 0.65rem;
+  font-weight: 600;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.corner {
+  background: #f3f3f3;
+  min-width: 110px;
+}
+
+.howto {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.howto strong {
+  font-weight: 700;
+  color: #222;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}

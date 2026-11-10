@@ -92,6 +92,12 @@ export function SiteHeader() {
         </div>
       ) : null}
 
+      {isCurrent ? (
+        <div className={styles.dealBar}>
+          <p>2点で30%off　/　3点以上で40%off</p>
+        </div>
+      ) : null}
+
       {isMobile ? (
         <div className={styles.barMobile}>
           <button

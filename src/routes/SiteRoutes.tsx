@@ -3,6 +3,7 @@ import { HomePage } from "../pages/HomePage";
 import { WomenClpPage } from "../pages/WomenClpPage";
 import { SweatersPlpPage } from "../pages/SweatersPlpPage";
 import { PdpPage } from "../pages/PdpPage";
+import { StoreStockPage } from "../pages/StoreStockPage";
 import { CartPage } from "../pages/CartPage";
 import { CheckoutEmailPage } from "../pages/checkout/CheckoutEmailPage";
 import { CheckoutShippingPage } from "../pages/checkout/CheckoutShippingPage";
@@ -16,6 +17,7 @@ export function SiteRoutes() {
       <Route path="/women" element={<WomenClpPage />} />
       <Route path="/women/sweaters" element={<SweatersPlpPage />} />
       <Route path="/product/:id" element={<PdpPage />} />
+      <Route path="/product/:id/store-stock" element={<StoreStockPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<Navigate to="/checkout/email" replace />} />
       <Route path="/checkout/email" element={<CheckoutEmailPage />} />

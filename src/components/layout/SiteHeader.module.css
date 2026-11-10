@@ -124,6 +124,16 @@
   padding: 0.55rem var(--space-4);
 }
 
+.dealBar {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.5rem var(--space-4);
+}
+
 .barDesktop {
   border-bottom: 1px solid var(--color-border);
   background: #fff;
