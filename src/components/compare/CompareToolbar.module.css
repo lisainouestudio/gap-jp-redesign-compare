@@ -11,9 +11,10 @@
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5rem;
   min-width: 180px;
+  flex-wrap: wrap;
 }
 
 .brand strong {
@@ -21,9 +22,30 @@
   letter-spacing: 0.04em;
 }
 
-.brand span {
+.brand > span:not(.liveViewport) {
   font-size: var(--fs-xs);
   color: #9aa3b2;
+}
+
+.liveViewport {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.liveDesktop {
+  background: rgba(110, 168, 254, 0.15);
+  color: #9ec5ff;
+  border-color: rgba(110, 168, 254, 0.35);
+}
+
+.liveMobile {
+  background: rgba(255, 184, 108, 0.16);
+  color: #ffc98a;
+  border-color: rgba(255, 184, 108, 0.4);
 }
 
 .groups {

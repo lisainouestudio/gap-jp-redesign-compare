@@ -16,6 +16,15 @@ export function CompareToolbar() {
       <div className={styles.brand}>
         <strong>Gap JP</strong>
         <span>Redesign Compare</span>
+        <span
+          className={[
+            styles.liveViewport,
+            viewport === "mobile" ? styles.liveMobile : styles.liveDesktop,
+          ].join(" ")}
+          aria-live="polite"
+        >
+          Viewing: {viewport === "mobile" ? "Mobile 390" : "Desktop 1280"}
+        </span>
       </div>
 
       <div className={styles.groups}>
