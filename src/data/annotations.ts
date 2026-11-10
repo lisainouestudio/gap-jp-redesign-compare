@@ -1,10 +1,17 @@
 export type Annotation = {
   id: string;
   page: string;
-  /** Horizontal position as % of page width */
+  /** Horizontal position as % of page width (fallback when anchor is missing) */
   x: number;
-  /** Vertical position in px from top of the page (not % — page is very tall) */
+  /** Vertical position in px from top of the page (fallback when anchor is missing) */
   y: number;
+  /**
+   * Optional CSS selector scoped to the Improved site root.
+   * When set, the hotspot centers on that element (survives pane width / image load).
+   */
+  anchor?: string;
+  /** With `anchor`, keep `x` and only take vertical position from the element. */
+  anchorYOnly?: boolean;
   title: string;
   why: string;
   how: string;
@@ -96,8 +103,9 @@ export const annotations: Annotation[] = [
   {
     id: "a-news-to-footer",
     page: "/",
-    x: 18,
-    y: 3020,
+    x: 76,
+    y: 3040,
+    anchor: '[data-hotspot="a-news-to-footer"]',
     title: "News moved to the footer",
     why: "A full news row on the homepage doesn’t help shoppers complete a purchase and adds scroll length after the browse modules.",
     how: "Removed the news carousel from the homepage and added a News link in the footer for anyone who still needs it.",
@@ -168,8 +176,10 @@ export const annotations: Annotation[] = [
   {
     id: "a-pdp-reviews",
     page: "/product/:id",
-    x: 50,
+    x: 32,
     y: 980,
+    anchor: '[data-hotspot="a-pdp-reviews"]',
+    anchorYOnly: true,
     title: "Reviews under product details",
     why: "Without reviews on the PDP, shoppers lack social proof and fit context before adding to cart.",
     how: "Added a reviews block under the details accordion with rating, fit scale, AI summary, keywords, three visible reviews, and pagination.",
@@ -179,6 +189,7 @@ export const annotations: Annotation[] = [
     page: "/product/:id",
     x: 50,
     y: 1680,
+    anchor: '[data-hotspot="a-pdp-coord-order"]',
     title: "Outfit ideas moved up",
     why: "おすすめコーディネート商品 used to sit lower on the page, so shoppers decided on the item before seeing how to wear it with other pieces.",
     how: "Brought the coordinate module up after reviews so shoppers can envision complete looks sooner.",

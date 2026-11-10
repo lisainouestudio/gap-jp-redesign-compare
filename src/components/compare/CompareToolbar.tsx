@@ -34,7 +34,6 @@ export function CompareToolbar() {
       <div className={styles.brand}>
         <strong>Gap JP</strong>
         <span>Redesign Compare</span>
-        <span className={styles.credit}>Audit &amp; redesign by Lisa Inoue</span>
         <span className={[styles.liveViewport, styles.liveDesktop].join(" ")} aria-live="polite">
           Viewing: Desktop 1280
         </span>
@@ -78,7 +77,7 @@ export function CompareToolbar() {
         </div>
       </div>
 
-      <p className={styles.note}>Focus: Home · Nav · PDP</p>
+      <p className={styles.credit}>Audit &amp; redesign by Lisa Inoue</p>
     </header>
   );
 }

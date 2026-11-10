@@ -617,7 +617,7 @@ export function PdpPage() {
 
             <section id="reviews" className={styles.reviews} aria-label="お客様のレビュー">
               <div className={styles.reviewsHead}>
-                <h2>お客様のレビュー</h2>
+                <h2 data-hotspot="a-pdp-reviews">お客様のレビュー</h2>
                 <button type="button" className={styles.writeReview}>
                   <PencilIcon /> レビューを書く
                 </button>
@@ -772,7 +772,7 @@ export function PdpPage() {
         </div>
 
         <section className={styles.coord} aria-label="おすすめコーディネート商品">
-          <h2>おすすめコーディネート商品</h2>
+          <h2 data-hotspot="a-pdp-coord-order">おすすめコーディネート商品</h2>
           <div className={styles.coordFrame}>
             <button
               type="button"

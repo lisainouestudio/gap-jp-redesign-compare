@@ -22,19 +22,19 @@
   letter-spacing: 0.04em;
 }
 
-.brand > span:not(.liveViewport):not(.credit) {
+.brand > span:not(.liveViewport) {
   font-size: var(--fs-xs);
   color: #9aa3b2;
 }
 
 .credit {
-  font-size: 11px;
-  font-weight: 600;
+  margin: 0 0 0 auto;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.02em;
   color: #c5ccd8;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid rgba(197, 204, 216, 0.35);
-  border-radius: 999px;
+  white-space: nowrap;
 }
 
 .liveViewport {
@@ -90,14 +90,10 @@
   color: #0b1220 !important;
 }
 
-.note {
-  font-size: var(--fs-xs);
-  color: #7d8696;
-  margin-left: auto;
-}
-
-@media (max-width: 900px) {
-  .note {
-    display: none;
+@media (max-width: 720px) {
+  .credit {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
   }
 }

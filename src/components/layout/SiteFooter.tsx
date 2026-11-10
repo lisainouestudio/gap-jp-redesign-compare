@@ -40,7 +40,14 @@ export function SiteFooter() {
         <ul className={styles.helpGrid}>
           {helpLinks.map((l) => (
             <li key={l.label}>
-              <Link to={l.href}>{l.label}</Link>
+              <Link
+                to={l.href}
+                {...(l.label === "ニュース"
+                  ? { "data-hotspot": "a-news-to-footer" }
+                  : {})}
+              >
+                {l.label}
+              </Link>
             </li>
           ))}
         </ul>
